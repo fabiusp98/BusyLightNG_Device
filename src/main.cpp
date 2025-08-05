@@ -10,9 +10,10 @@ enum stateEnum {  //Master state
   avail,
   toAvail,
   busy,
-  toBusy
+  toBusy,
+  init
 };
-stateEnum state = avail;
+stateEnum state = init;
 
 int animFrame;  //Animation frame index
 
@@ -69,11 +70,16 @@ void loop()
       if(animFrame == NUM_LEDS)  //If at end of strip, go to steady state
         state = avail;
     break;
+
+    case init:  //Default at bootup
+      leds[0] = CRGB::Green;
+      leds[1] = CRGB::Red;
+    break;
     
-    default:  //For steady state, do nothing
+    default:  //Otherwise in steady state so do nothing
       break;
   }
 
   FastLED.show(); //Output frame
-  delay(50); //Sleep for 250ms
+  delay(50); //Sleep for 50ms, thus animations play at 20fps
 }
