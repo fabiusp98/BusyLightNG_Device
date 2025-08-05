@@ -11,9 +11,9 @@ enum stateEnum {  //Master state
   toAvail,
   busy,
   toBusy,
-  init
+  onBoot
 };
-stateEnum state = init;
+stateEnum state = onBoot;
 
 int animFrame;  //Animation frame index
 
@@ -71,7 +71,7 @@ void loop()
         state = avail;
     break;
 
-    case init:  //Default at bootup
+    case onBoot:  //Default at bootup
       leds[0] = CRGB::Green;
       leds[1] = CRGB::Red;
     break;
