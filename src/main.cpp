@@ -26,7 +26,7 @@ void setup() {
   FastLED.setBrightness(BRIGHTNESS);
 
   for(int i = 0; i < NUM_LEDS; i++) {
-    leds[i] = CRGB::Green;
+    leds[i] = CRGB::Black;
   }
 
   FastLED.show();
